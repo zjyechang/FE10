@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{arr}}
+        <button v-on:click="show()">show</button>
+        <button @click="add('mmp')">单击</button>
+        <button @dblclick="add('ysr')">双击</button>
+    </div>
+
+</body>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: { arr:['fnndp','ssr','cnmlgb']},
+        methods: {
+            show: function(){
+                console.log("???")
+            },
+            add(aa){
+                this.arr.push(aa)
+            }
+
+        }
+    })
+
+    vm.name = "shudong";
+</script>
+
+</html>

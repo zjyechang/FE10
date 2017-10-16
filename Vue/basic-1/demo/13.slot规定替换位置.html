@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+    <style>
+.fontSize{
+    font-size: 50px;
+}
+.red{
+    color:red;
+}
+     </style>
+</head>
+
+<body>
+    
+    <div id="app">
+    <yechang>
+       <div slot="one">
+           替换掉slot中的第一个位置
+       </div>
+       <div slot="three">
+           替换掉slot中的第三个位置
+        </div>
+       <div slot="two">
+            替换掉slot中的第二个位置
+        </div>
+        
+
+       <div>我不是一个slot标签</div>
+    </yechang>
+    </div>
+    
+    
+</body>
+<script>
+    
+    Vue.component('yechang',{
+        template:`
+        <div>
+            <span>首页</span>
+            <slot name="one"><p>第一个位置</p></slot>
+            <slot name="two"><p>第二个位置</p></slot>
+            <slot name="three"><p>第三个位置</p></slot>
+            <slot>我就咬你</slot>
+        </div>
+        `
+    })
+
+    let vm = new Vue({
+        el: "#app",
+    })
+
+</script>
+
+</html>

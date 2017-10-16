@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>    
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="box1">
+        <mmp />
+    </div>
+
+    <div id="box2">
+        <mmp />
+    </div>
+
+    <script>
+    Vue.component('mmp',{
+        data: function(){
+            return {
+                show: false
+            }
+        },
+        template:`
+        <div>
+            <h1> hello yechang </h1>
+        </div>`
+    })
+
+    let vm = new Vue({
+        el: "#box1"
+    })
+
+    let vx = new Vue({
+        el: "#box2"
+    })
+    </script>
+</body>
+</html>

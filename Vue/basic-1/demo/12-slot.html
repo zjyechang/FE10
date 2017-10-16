@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+    <style>
+.fontSize{
+    font-size: 50px;
+}
+.red{
+    color:red;
+}
+     </style>
+</head>
+
+<body>
+    <div id="app">
+       <mmp>
+           <div>替换掉slot中的内容</div>
+       </mmp>
+    </div>
+    
+    <template id="charley">
+        <div>
+            <slot>
+                这里就是插槽
+            </slot>
+
+            <h1>slot开始</h1>
+        </div>
+    </template>
+</body>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: { 
+           a: "yechang"
+        },
+        components:{
+            'mmp':{
+                template: "#charley"
+            }
+        }
+    })
+
+</script>
+
+</html>

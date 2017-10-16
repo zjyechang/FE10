@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>    
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button onclick="change()">点击更新</button>
+        <button onclick="destroy()">点击销毁</button>
+        <button id="click">点我</button>
+    </div>
+
+    <script>
+    // new Vue({
+    //     data: {
+    //         a: 1
+    //     },
+    //     created: function () {
+    //         // `this` 指向 vm 实例
+    //         console.log('a is: ' + this.a)
+    //     }
+    // })
+// => "a is: 1"
+$("#click").click(function(){
+    alert("11111");
+})//写在这里是无效的,需要写在挂载后才有用
+
+
+function change(){
+    vm.msg = "yechang";
+}
+function destroy(){
+    vm.$destroy();
+}
+let vm = new Vue({
+    el: '#app',
+    data: {msg:"hellow vue!"},
+    beforeCreate() {
+        alert("实例创建前");
+    },
+    created() {
+        alert('实例创建完成');
+        $("#click").click(function(){
+            alert("222222");
+        })
+    },
+    beforeMount() {
+        alert("实例挂载前");
+    },
+    mounted() {
+        alert("实例挂载完成");
+        $("#click").click(function(){
+            alert("333333");
+        })
+    },
+    beforeUpdate() {
+        alert("实例更新前");
+    },
+    updated() {
+        alert("实例更新完成");
+    },
+    beforeDestroy() {
+        alert("实例销毁前");
+    },
+    destroyed() {
+        alert("实例销毁完成");
+    }
+})
+    </script>
+</body>
+</html>
