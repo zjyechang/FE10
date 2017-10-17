@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+    
+</head>
+<body>
+    
+    <div id="box">
+
+            {{a}}
+            {{b}}
+            {{obj}}
+    </div>
+
+    <script>
+    let vm = new Vue({
+        el: "#box",
+        data: {
+            a: "111",
+            b: "222",
+            obj: {
+                name: "yechang",
+                age: 18,
+            }
+        },
+
+    })
+    
+    // vm.$watch('obj',function(){
+    //     alert('obj发生了变化');
+    //     // 不弹出，因为一个对象需要深度监听
+    //     this.b = this.a+100;
+    // })
+
+    vm.$watch('obj',function(newVal,oldVal){
+        alert('obj发生了变化');
+        console.log("new:%s ,old:%s",newVal,oldVal); //输出改变前后的值
+        // 弹出，因为一个对象需要深度监听
+    }, {
+        deep:true
+    })
+
+
+    document.onclick = function(){
+        vm.obj.name = "charley";
+    }
+    </script>
+</body>
+</html>

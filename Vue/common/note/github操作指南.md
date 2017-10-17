@@ -37,3 +37,48 @@ git clone  https://github.com/itguide/fe10.git .
 
 常用命令：
     git remote -v #查看本地的库的远程地址
+
+
+## 创建分支 
+
+### git checkout -b 分支名字
+创建并切换到分支
+
+### git branch 
+查看所有分支
+
+### git branch 分支名字
+用于创建分支
+
+### git checkout 分支名字
+切换分支
+
+
+分支概念：
+
+为了理解 Git 分支的实现方式，我们需要回顾一下 Git 是如何储存数据的。或许你还记得第一章的内容，Git 保存的不是文件差异或者变化量，而只是一系列文件快照。
+
+在 Git 中提交时，会保存一个提交（commit）对象，该对象包含一个指向暂存内容快照的指针，包含本次提交的作者等相关附属信息，包含零个或多个指向该提交对象的父对象指针：首次提交是没有直接祖先的，普通提交有一个祖先，由两个或多个分支合并产生的提交则有多个祖先。
+
+为直观起见，我们假设在工作目录中有三个文件，准备将它们暂存后提交。暂存操作会对每一个文件计算校验和（即第一章中提到的 SHA-1 哈希字串），然后把当前版本的文件快照保存到 Git 仓库中（Git 使用 blob 类型的对象存储这些快照），并将校验和加入暂存区域：
+
+
+github 私有仓库
+
+github 组织 20美金
+
+gitlab.com 推荐
+git.oschina.net
+coding.net
+https://gitee.com/
+内部公司自己搭建
+
+
+git pull origin vueday2
+
+git fetch origin 
+ 
+git checkout vueday2
+
+history | grey vue
+筛选历史记录中有关vue的
