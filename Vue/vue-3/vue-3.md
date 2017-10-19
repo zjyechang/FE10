@@ -286,7 +286,6 @@ https://router.vuejs.org/zh-cn/
 
 ```
     <router-link to="/work" active-class="starkwang">我的工作</router-link>
-
 ```
 
 ## 统一更改激活样式
@@ -440,10 +439,15 @@ to 打印出来是一个对象
 访问方式
 http://localhost:8080/#/user/ye/9
 
-ye 就是  this.$router.params.user  的值
-9 就是  this.$router.params.num  的值
+ye 就是  this.$route.params.user  的值
+9 就是  this.$route.params.num  的值
 
 this.$router.params == { user: ye, num: 9}  
 
 
 
+
+
+# vue-X
+
+npm index.html
