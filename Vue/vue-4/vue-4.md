@@ -1,12 +1,45 @@
-## 生产环境
+<!-- TOC -->
+
+    - [0.1. 生产环境](#01-生产环境)
+    - [0.2. 开发环境](#02-开发环境)
+    - [0.3. 端口被占用](#03-端口被占用)
+- [1. 在vue里面使用axios的正确姿势](#1-在vue里面使用axios的正确姿势)
+    - [1.1. 官方资源](#11-官方资源)
+    - [1.2. 安装](#12-安装)
+    - [1.3. 在组件里面使用axios](#13-在组件里面使用axios)
+- [2. 解决跨域问题](#2-解决跨域问题)
+        - [2.0.1. 使用$http.get()的方式访问](#201-使用httpget的方式访问)
+            - [2.0.1.1. 使用方式](#2011-使用方式)
+            - [2.0.1.2. 在入口文件里面添加](#2012-在入口文件里面添加)
+            - [2.0.1.3. 在组件里面使用](#2013-在组件里面使用)
+- [3. 解决api中请求图片403问题](#3-解决api中请求图片403问题)
+    - [3.1. 解决这个问题的姿势](#31-解决这个问题的姿势)
+        - [3.1.1. 使用方法：把api图片连接提取出来，使用下面方法过滤](#311-使用方法把api图片连接提取出来使用下面方法过滤)
+        - [3.1.2. 整个组件代码](#312-整个组件代码)
+- [4. vuex](#4-vuex)
+- [5. vuex指南](#5-vuex指南)
+    - [5.1. 官方手册](#51-官方手册)
+    - [5.2. Vuex是什么？](#52-vuex是什么)
+    - [5.3. 什么情况下我应该使用 Vuex？](#53-什么情况下我应该使用-vuex)
+    - [5.4. 开始使用](#54-开始使用)
+    - [5.5. 使用方法](#55-使用方法)
+        - [5.5.1. 下载vuex](#551-下载vuex)
+        - [5.5.2. 在src里面创建一个 store 文件夹](#552-在src里面创建一个-store-文件夹)
+        - [5.5.3. store/index.js内容如下](#553-storeindexjs内容如下)
+        - [5.5.4. 在/src/main.js 入口文件引入 vuex](#554-在srcmainjs-入口文件引入-vuex)
+        - [5.5.5. 创建一个组件](#555-创建一个组件)
+
+<!-- /TOC -->
+
+## 0.1. 生产环境
     真正的产品上线的环境
 
-## 开发环境
+## 0.2. 开发环境
     本地开发的环境
 
     process.env.NODE_ENV
 
-## 8080 端口被占用
+## 0.3. 端口被占用
 
 netstat -ano | grep 8080
 
@@ -28,19 +61,19 @@ netstat -ano | grep 8080
 
 
 
-# 在vue里面使用axios的正确姿势
+# 1. 在vue里面使用axios的正确姿势
 
-## 官方资源
+## 1.1. 官方资源
 https://www.npmjs.com/package/axios 
 
 https://github.com/mzabriskie/axios 
 
-## 安装
+## 1.2. 安装
 cnpm i axios -D  
 
 在组件里面单独使用
 
-## 在组件里面使用axios
+## 1.3. 在组件里面使用axios
 /src/views/hero/index.vue
 
 ```
@@ -72,7 +105,7 @@ import axios from 'axios';
 
 
 
-# 解决跨域问题
+# 2. 解决跨域问题
 在/config/index.js里面配置
 
 
@@ -132,18 +165,18 @@ import axios from 'axios';
 知乎日报api:
 https://news-at.zhihu.com/api/4/news/latest
 
-### 使用$http.get()的方式访问
+### 2.0.1. 使用$http.get()的方式访问
 把 axios 换成 this.$http
 
 
-#### 使用方式
+#### 2.0.1.1. 使用方式
 
 ```
 npm install --save axios vue-axios
 ```
 
 
-#### 在入口文件里面添加
+#### 2.0.1.2. 在入口文件里面添加
 
 ```
 import Vue from 'vue'
@@ -154,7 +187,7 @@ Vue.use(VueAxios, axios)
 
 ```
 
-#### 在组件里面使用
+#### 2.0.1.3. 在组件里面使用
 ```
 axios.get() -> this.$http.get()
 
@@ -236,18 +269,18 @@ if (typeof exports == "object") {
 
 
 
-# 解决api中请求图片403问题
+# 3. 解决api中请求图片403问题
 
 *当我们访问某些接口的时候，解决了跨域问题，又产生了图片403禁止访问的问题*
 >这种设计是api厂商正常保证自己的服务器不被刷流量  
 
-## 解决这个问题的姿势
+## 3.1. 解决这个问题的姿势
 
 利用这个网址来处理给你返回图片api地址  
 https://images.weserv.nl/?url=图片地址
 
 
-### 使用方法：把api图片连接提取出来，使用下面方法过滤 
+### 3.1.1. 使用方法：把api图片连接提取出来，使用下面方法过滤 
 
 ```
 <div>图片：<img :src="getImage(item.img)" :alt="item.hero_title"></div>
@@ -261,7 +294,7 @@ getImage(url){
 }
 ```
 
-### 整个组件代码
+### 3.1.2. 整个组件代码
 
 配置代理
 
@@ -347,13 +380,13 @@ getImage(url){
 
 
 
-# vuex
-# vuex指南
-## 官方手册
+# 4. vuex
+# 5. vuex指南
+## 5.1. 官方手册
 https://vuex.vuejs.org/zh-cn/
 
 
-## Vuex是什么？
+## 5.2. Vuex是什么？
 Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 devtools extension，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。
 
 
@@ -385,7 +418,7 @@ actions，响应在 view 上的用户输入导致的状态变化
 
 这就是 Vuex 背后的基本思想，借鉴了 Flux、Redux、和 The Elm Architecture。与其他模式不同的是，Vuex 是专门为 Vue.js 设计的状态管理库，以利用 Vue.js 的细粒度数据响应机制来进行高效的状态更新。
 
-## 什么情况下我应该使用 Vuex？
+## 5.3. 什么情况下我应该使用 Vuex？
 
 虽然 Vuex 可以帮助我们管理共享状态，但也附带了更多的概念和框架。这需要对短期和长期效益进行权衡。
 
@@ -393,16 +426,16 @@ actions，响应在 view 上的用户输入导致的状态变化
 
 Flux 架构就像眼镜：您自会知道什么时候需要它。
 
-## 开始使用
+## 5.4. 开始使用
 每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。Vuex 和单纯的全局对象有以下两点不同：
 
 Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。
 
 你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。
 
-##使用方法
+## 5.5. 使用方法
 
-### 下载vuex
+### 5.5.1. 下载vuex
 
 ```
 npm install vuex --save
@@ -410,10 +443,10 @@ or
 yarn add vuex
 ```
 
-###　在src里面创建一个 store 文件夹
+### 5.5.2. 在src里面创建一个 store 文件夹
     在store 文件夹里面新建一个index.js
 
-### store/index.js内容如下
+### 5.5.3. store/index.js内容如下
 
 ```
 import Vue from 'vue'
@@ -430,7 +463,7 @@ let store = new Vuex.Store({
 export default store
 ```
 
-### 在/src/main.js 入口文件引入 vuex
+### 5.5.4. 在/src/main.js 入口文件引入 vuex
 
 ```
 import Vue from 'vue'
@@ -453,7 +486,7 @@ new Vue({
 })
 ```
 
-### 创建一个组件
+### 5.5.5. 创建一个组件
 Increment.vue
 
 ```
