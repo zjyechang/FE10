@@ -5,12 +5,13 @@
         <input type="button" value='-' @click="minHandle(5)">
         <span>{{num}}</span>
         <input type="button" value='+' @click="addHandle(3)">
-        {{num2}}
+        {{num2}},{{name}},{{age}}
     </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
 //   data(){
 //       return {
@@ -18,14 +19,38 @@ export default {
 //         //   num: 100
 //       }
 //   },
+  // computed: {
+  //     num(){
+  //         return this.$store.state.num
+  //     },
+  //     num2(){
+  //       // return this.num> 130? 130: this.num;
+  //       return this.$store.getters.count
+  //     }
+  // },
+  // 使用方式一：
+  // computed: mapState(['num','age','name']),
+  // 使用方式二：
+  // computed: mapState({
+  //   // num:state => state.age,   //写法一
+  //   // num: 'num', //写法二
+  //   num(state){
+  //     return state.num+100
+  //   },
+  // }),
+  // 使用方式三：
   computed: {
+    ...mapState({
       num(){
-          return this.$store.state.num
+        return this.$store.state.num
       },
-      num2(){
-        // return this.num> 130? 130: this.num;
-        return this.$store.getters.count
+      age(){
+        return this.$store.state.age
+      },
+      name(){
+        return this.$store.state.name
       }
+    })
   },
   methods: {
       minHandle(num){
@@ -41,7 +66,9 @@ export default {
         //   this.num +=5;
         this.$store.commit('AddIncrement',num)        
       },
-
+      ...mapActions({
+        addHaldle: 'addActive',
+      })
 
   }
 }

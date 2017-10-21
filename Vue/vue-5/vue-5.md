@@ -28,3 +28,26 @@
 
 未来怎么样？
 未来是由每一个当下组成的
+
+
+
+## mutation提交的不同方式
+```
+ computed:{
+    num(){
+        return  this.$store.state.num
+    }
+},
+```
+
+
+## vuex的异步解决
+把异步的代码写在action里面解决异步的问题
+
+
+## 在actions内部通过context.dispath()实现
+
+
+
+
+##get 就是复制了一份
