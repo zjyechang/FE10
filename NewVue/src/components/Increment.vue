@@ -5,7 +5,8 @@
         <input type="button" value='-' @click="minHandle(5)">
         <span>{{num}}</span>
         <input type="button" value='+' @click="addHandle(3)">
-        {{num2}},{{name}},{{age}}
+        {{name}},{{age}},{{num2}}
+        getters{{count}}
     </div>
   </div>
 </template>
@@ -19,15 +20,15 @@ export default {
 //         //   num: 100
 //       }
 //   },
-  // computed: {
-  //     num(){
-  //         return this.$store.state.num
-  //     },
-  //     num2(){
-  //       // return this.num> 130? 130: this.num;
-  //       return this.$store.getters.count
-  //     }
-  // },
+  computed: {
+      num(){
+          return this.$store.state.num
+      },
+      num2(){
+        // return this.num> 130? 130: this.num;
+        return this.$store.getters.count
+      }
+  },
   // 使用方式一：
   // computed: mapState(['num','age','name']),
   // 使用方式二：
@@ -56,19 +57,22 @@ export default {
       minHandle(num){
         //   this.num -=5;
         // this.$store.commit('MinIncrement',{n:num, name: 'charley'})
-        this.$store.commit({
-          type: 'MinIncrement',
-          n:num,
-          name: 'charley'
-          })
+        
+        // this.$store.commit({
+          //   type: 'MinIncrement',
+        //   n:num,
+        //   name: 'charley'
+        //   })
+
+        this.$store.dispatch('addAction');
       },
       addHandle(num){
         //   this.num +=5;
         this.$store.commit('AddIncrement',num)        
       },
-      ...mapActions({
-        addHaldle: 'addActive',
-      })
+      // ...mapActions({
+      //   addHaldle: 'addActive',
+      // })
 
   }
 }
